@@ -1,0 +1,26 @@
+## Build and output
+[Bb]in/
+[Oo]bj/
+artifacts/
+TestResults/
+[Tt]est[Rr]esults/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider / IDE
+.idea/
+*.DotSettings.user
+
+## OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Temp runtime data / locks
+.instance.lock
+*.tmp
