@@ -46,16 +46,9 @@ public partial class PetWindow : Window
 
         SpriteImage.Source = frame;
 
-        if (facingLeft)
-        {
-            FlipTransform.ScaleX = -1;
-            FlipTransform.CenterX = frame.PixelWidth / 2.0;
-        }
-        else
-        {
-            FlipTransform.ScaleX = 1;
-            FlipTransform.CenterX = 0;
-        }
+        FlipTransform.ScaleX = facingLeft ? -1.0 : 1.0;
+        FlipTransform.CenterX = 0;
+        FlipTransform.CenterY = 0;
     }
 
     public void SetDimensions(double widthDip, double heightDip)
