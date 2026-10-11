@@ -1,13 +1,13 @@
 # VChibi — Desktop Idol Pet
 
 [![Windows CI and Release](https://github.com/UGing265/VChibi/actions/workflows/release.yml/badge.svg)](https://github.com/UGing265/VChibi/actions/workflows/release.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../NOTICES.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](NOTICES.md)
 
 **Mang một nhân vật chibi lên desktop Windows — đi dạo, đứng nghỉ và đồng hành cùng bạn khi làm việc.**
 
 VChibi là ứng dụng desktop pet 2D dùng animation PNG, xây dựng bằng **C# / .NET 10 / WPF**. Bạn quản lý thư viện nhân vật, tạo pet từ ảnh và thả nhân vật trực tiếp lên màn hình, không chỉ xem animation trong cửa sổ ứng dụng.
 
-[Tải bản phát hành](https://github.com/UGing265/VChibi/releases) · [Hướng dẫn chi tiết](user-guide.md) · [Báo lỗi / góp ý](https://github.com/UGing265/VChibi/issues) · [Changelog](changelog.md)
+[Tải bản phát hành](https://github.com/UGing265/VChibi/releases) · [Hướng dẫn chi tiết](docs/user-guide.md) · [Báo lỗi / góp ý](https://github.com/UGing265/VChibi/issues) · [Changelog](docs/changelog.md)
 
 ## Nội dung
 
@@ -25,15 +25,19 @@ VChibi là ứng dụng desktop pet 2D dùng animation PNG, xây dựng bằng *
 
 ### Thư viện nhân vật
 
-![Thư viện VChibi với danh sách pet, preview và cài đặt kích thước, tốc độ](images/app.png)
+![Thư viện VChibi với danh sách pet, preview và cài đặt kích thước, tốc độ](docs/images/app.png)
+
+### Trình chỉnh sửa pet
+
+![Trình chỉnh sửa VChibi với frame Đứng và Đi, thanh FPS và preview animation](docs/images/editor.png)
 
 ### Đồng hành khi làm việc
 
-![Nhân vật chibi trên desktop khi làm việc trong Visual Studio](images/working.png)
+![Nhân vật chibi trên desktop khi làm việc trong Visual Studio](docs/images/working.png)
 
 ### Đồng hành khi xem video
 
-![Nhân vật chibi hiển thị trên màn hình khi xem YouTube](images/watching-yt.png)
+![Nhân vật chibi hiển thị trên màn hình khi xem YouTube](docs/images/watching-yt.png)
 
 ## Tính năng
 
@@ -107,7 +111,7 @@ App kiểm tra gói và sao chép dữ liệu vào kho nội bộ. Dùng thư m�
 - Dữ liệu nằm trong `%LOCALAPPDATA%\VChibi\`: `settings.json` và `Pets/<id>/`.
 - App lưu bản sao ảnh đã import; chỉnh ảnh nguồn bên ngoài không tự cập nhật pet đang lưu.
 
-Xem thêm [hướng dẫn sử dụng](user-guide.md).
+Xem thêm [hướng dẫn sử dụng](docs/user-guide.md).
 
 ## Kiến trúc
 
@@ -134,6 +138,7 @@ Pet đã lưu và cài đặt nằm ngoài thư mục cài app. Khóa `.instance
 VChibi/
 ├── VChibi.sln
 ├── NOTICES.md
+├── README.md                      # Giới thiệu dự án
 ├── .github/
 │   └── workflows/
 │       └── release.yml
@@ -164,7 +169,7 @@ VChibi/
 │       └── ViewModels/
 ├── scripts/                       # Smoke scripts PowerShell
 └── docs/
-    ├── README.md                  # Tài liệu giới thiệu này
+    ├── images/                    # Ảnh minh họa README
     ├── user-guide.md
     ├── release.md
     ├── changelog.md
@@ -209,7 +214,7 @@ dotnet publish src/VChibi/VChibi.csproj -c Release -p:PublishProfile=Windows -p:
 - **Rerun:** dùng lại tag của cùng workflow run.
 - Số phiên bản có thể nhảy vì PR/lần chạy lỗi cũng tiêu thụ số run.
 
-Xem [quy trình phát hành](release.md). CI xanh không thay thế kiểm thử thực tế click-through, DPI, tray, Sleep hoặc môi trường Windows sạch; các giới hạn kiểm thử được ghi trong [verification](plans/261011-vchibi-desktop-pet/verification.md).
+Xem [quy trình phát hành](docs/release.md). CI xanh không thay thế kiểm thử thực tế click-through, DPI, tray, Sleep hoặc môi trường Windows sạch; các giới hạn kiểm thử được ghi trong [verification](docs/plans/261011-vchibi-desktop-pet/verification.md).
 
 ### Đóng góp
 
@@ -227,9 +232,9 @@ Mở issue để báo lỗi hoặc đề xuất tính năng; gửi thay đổi q
 
 **Copyright (c) 2026 VChibi Authors.**
 
-- **Mã nguồn VChibi:** MIT License theo [NOTICES.md](../NOTICES.md). Cho phép sử dụng, sửa đổi và phân phối, kể cả thương mại, với điều kiện giữ thông báo bản quyền và giấy phép.
+- **Mã nguồn VChibi:** MIT License theo [NOTICES.md](NOTICES.md). Cho phép sử dụng, sửa đổi và phân phối, kể cả thương mại, với điều kiện giữ thông báo bản quyền và giấy phép.
 - **Pet mẫu `src/VChibi/Assets/DefaultPet/`:** CC0 1.0 theo thông báo hiện có trong `NOTICES.md`.
 - **Thư viện bên thứ ba:** WPF-UI, CommunityToolkit.Mvvm và .NET/WPF giữ giấy phép/thông báo riêng, được liệt kê trong `NOTICES.md`.
 - **Pet/artwork người dùng import:** không mặc nhiên thuộc giấy phép MIT hoặc CC0 của dự án. Quyền sử dụng và phân phối phụ thuộc tác giả/chủ sở hữu từng bộ ảnh.
 
-Phần mềm cung cấp “AS IS”, không kèm bảo đảm, theo điều khoản MIT đầy đủ trong [NOTICES.md](../NOTICES.md).
+Phần mềm cung cấp “AS IS”, không kèm bảo đảm, theo điều khoản MIT đầy đủ trong [NOTICES.md](NOTICES.md).
