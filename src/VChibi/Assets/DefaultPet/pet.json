@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "default-chibi",
+  "name": "Chibi Idol",
+  "animations": {
+    "idle": {
+      "fps": 6,
+      "frames": [
+        "idle/001.png",
+        "idle/002.png",
+        "idle/003.png",
+        "idle/004.png"
+      ]
+    },
+    "walk": {
+      "fps": 8,
+      "frames": [
+        "walk/001.png",
+        "walk/002.png",
+        "walk/003.png",
+        "walk/004.png"
+      ]
+    }
+  }
+}
