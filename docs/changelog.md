@@ -4,6 +4,12 @@ Tất cả các thay đổi đáng chú ý của dự án VChibi được ghi nh
 
 ---
 
+## [Unreleased]
+
+### Đã thêm
+- GitHub Actions: PR vào `main` chạy test và đóng gói Windows; push vào `main` tự tạo tag và GitHub Release sau khi build/test/publish thành công.
+- ZIP self-contained chứa đầy đủ runtime, assets và thông báo giấy phép. Xem [quy trình phát hành](release.md).
+
 ## [1.0.0] — 2026-10-11
 
 ### Đã thêm (Added)
