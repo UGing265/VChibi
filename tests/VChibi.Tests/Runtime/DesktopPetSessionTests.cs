@@ -182,4 +182,29 @@ public class DesktopPetSessionTests
             session.Stop();
         });
     }
+
+    [Fact]
+    public void PetWindow_SetFrame_FlipsAroundCenter_WithoutShiftingCenterX()
+    {
+        RunInSta(() =>
+        {
+            var window = new VChibi.Views.PetWindow();
+            var frame = System.Windows.Media.Imaging.BitmapSource.Create(
+                543, 724, 96, 96, System.Windows.Media.PixelFormats.Bgra32, null, new byte[543 * 724 * 4], 543 * 4);
+
+            window.SetFrame(frame, facingLeft: false);
+            Assert.Equal(1.0, window.FlipScaleX);
+            Assert.False(window.IsFacingLeft);
+            Assert.Equal(0, window.FlipTransform.CenterX);
+
+            window.SetFrame(frame, facingLeft: true);
+            Assert.Equal(-1.0, window.FlipScaleX);
+            Assert.True(window.IsFacingLeft);
+            Assert.Equal(0, window.FlipTransform.CenterX);
+            Assert.Equal(0.5, window.SpriteImage.RenderTransformOrigin.X);
+            Assert.Equal(0.5, window.SpriteImage.RenderTransformOrigin.Y);
+
+            window.Close();
+        });
+    }
 }
