@@ -1,0 +1,77 @@
+name: Windows CI and Release
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build, test and package Windows
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build and test
+        shell: pwsh
+        run: |
+          dotnet test VChibi.sln -c Release
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Publish and package
+        shell: pwsh
+        env:
+          VERSION: 0.1.${{ github.run_number }}
+        run: |
+          dotnet publish src/VChibi/VChibi.csproj -c Release -p:PublishProfile=Windows -p:PublishDir="$env:GITHUB_WORKSPACE/artifacts/release/publish/" -p:Version=$env:VERSION
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $publish = Join-Path $env:GITHUB_WORKSPACE 'artifacts/release/publish'
+          foreach ($required in @('VChibi.exe', 'Assets/DefaultPet/pet.json', 'NOTICES.md')) {
+            if (-not (Test-Path (Join-Path $publish $required))) {
+              throw "Missing release file: $required"
+            }
+          }
+          Compress-Archive -Path "$publish/*" -DestinationPath "artifacts/release/VChibi-v$env:VERSION-win-x64.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-release
+          path: artifacts/release/*.zip
+          if-no-files-found: error
+          retention-days: 7
+
+  release:
+    name: Publish official GitHub Release
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    concurrency:
+      group: official-release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: windows-release
+          path: release
+      - name: Create tag and publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_SHA: ${{ github.sha }}
+          TAG: v0.1.${{ github.run_number }}
+        run: |
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" --target "$RELEASE_SHA" --title "VChibi $TAG" --generate-notes --draft
+          fi
+          gh release upload "$TAG" release/*.zip --clobber
+          gh release edit "$TAG" --draft=false

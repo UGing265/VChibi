@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Lavender Accent Palette -->
+    <!-- Primary lavender accent #7862B8 -->
+    <Color x:Key="LavenderAccentColor">#7862B8</Color>
+    <Color x:Key="LavenderAccentHoverColor">#6751A5</Color>
+    <Color x:Key="LavenderAccentPressedColor">#584393</Color>
+    <Color x:Key="LavenderAccentLightColor">#EDE9F6</Color>
+    <Color x:Key="LavenderAccentBorderColor">#D2C7EB</Color>
+
+    <SolidColorBrush x:Key="LavenderAccentBrush" Color="{StaticResource LavenderAccentColor}" />
+    <SolidColorBrush x:Key="LavenderAccentHoverBrush" Color="{StaticResource LavenderAccentHoverColor}" />
+    <SolidColorBrush x:Key="LavenderAccentPressedBrush" Color="{StaticResource LavenderAccentPressedColor}" />
+    <SolidColorBrush x:Key="LavenderAccentLightBrush" Color="{StaticResource LavenderAccentLightColor}" />
+    <SolidColorBrush x:Key="LavenderAccentBorderBrush" Color="{StaticResource LavenderAccentBorderColor}" />
+</ResourceDictionary>

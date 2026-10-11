@@ -24,3 +24,6 @@ desktop.ini
 ## Temp runtime data / locks
 .instance.lock
 *.tmp
+
+## Raw unbundled external assets
+/assets/congb/
