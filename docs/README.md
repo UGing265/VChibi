@@ -23,31 +23,17 @@ VChibi là ứng dụng desktop pet 2D dùng animation PNG, xây dựng bằng *
 
 ## Ảnh minh họa
 
-Các vị trí dưới đây dành cho ảnh chụp giao diện hiện tại. Chưa gắn ảnh cũ của giai đoạn phát triển để tránh mô tả sai bản ứng dụng.
-
 ### Thư viện nhân vật
 
-> **Vị trí ảnh 1:** cửa sổ thư viện, có danh sách pet, preview và thanh chỉnh kích thước/tốc độ.
->
-> File dự kiến: `docs/images/library.png`.
+![Thư viện VChibi với danh sách pet, preview và cài đặt kích thước, tốc độ](images/app.png)
 
-<!-- Khi có ảnh thật, thay khối vị trí ảnh phía trên bằng: ![Thư viện nhân vật VChibi](images/library.png) -->
+### Đồng hành khi làm việc
 
-### Pet trên desktop
+![Nhân vật chibi trên desktop khi làm việc trong Visual Studio](images/working.png)
 
-> **Vị trí ảnh 2:** nhân vật đang đi trên desktop, bên cạnh ứng dụng làm việc.
->
-> File dự kiến: `docs/images/desktop-pet.png`.
+### Đồng hành khi xem video
 
-<!-- Khi có ảnh thật: ![Nhân vật VChibi trên desktop](images/desktop-pet.png) -->
-
-### Trình chỉnh sửa pet
-
-> **Vị trí ảnh 3:** màn hình chỉnh sửa với frame Đứng/Đi và preview animation.
->
-> File dự kiến: `docs/images/pet-editor.png`.
-
-<!-- Khi có ảnh thật: ![Trình chỉnh sửa pet VChibi](images/pet-editor.png) -->
+![Nhân vật chibi hiển thị trên màn hình khi xem YouTube](images/watching-yt.png)
 
 ## Tính năng
 
